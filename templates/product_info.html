@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Information</title>
+</head>
+<body>
+    <h2>Product Details</h2>
+    <ul>
+        <li>Actual Price: {{ product_details['actual_price'] }}</li>
+        <li>Ratings: {{ product_details['ratings'] }}</li>
+        <li>No of Ratings: {{ product_details['no_of_ratings'] }}</li>
+        <li>Discount Percentage: {{ product_details['discount_percentage'] }}</li>
+        <li>i>Name Length: {{ product_details['name_length'] }}</li>
+        <li>Price Difference: {{ product_details['price_difference'] }}</li>
+        <li>Rating Ratio: {{ product_details['rating_ratio'] }}</li>
+        <li>Log Actual Price: {{ product_details['log_actual_price'] }}</li>
+    </ul>
+    <form action="{{ url_for('predict') }}" method="POST">
+        {% for key, value in product_details.items() %}
+            <input type="hidden" name="{{ key }}" value="{{ value }}">
+        {% endfor %}
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>
