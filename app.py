@@ -7,10 +7,9 @@ import numpy as np
 app = Flask(__name__)
 
 # Load the trained model and data
-model = joblib.load('random_forest_model.pkl')         # Ensure the model file path is correct
-df_cleaned = pd.read_csv('your_data.csv')         # Load your dataset, e.g., `df_cleaned`
-# Load your fitted Yeo-Johnson transformer
-yeo_johnson_transformer = joblib.load('yeo_johnson_transformer.pkl')
+model = joblib.load('random_forest_model.pkl')  # Ensure the model file path is correct
+df_cleaned = pd.read_csv('your_data.csv')  # Load your dataset, e.g., `df_cleaned`
+yeo_johnson_transformer = joblib.load('yeo_johnson_transformer.pkl')  # Load your fitted Yeo-Johnson transformer
 
 # Define the home route with product name input form
 @app.route('/', methods=['GET', 'POST'])
@@ -27,7 +26,8 @@ def home():
             product_details = product_info.iloc[0].to_dict()
             return render_template('product_info.html', product_details=product_details)
         else:
-            return "Product not found. Please try another product name.", 404
+            # Render custom error template with a "Go back" button
+            return render_template('product_not_found.html'), 404
     
     return render_template('index.html')
 
@@ -38,7 +38,8 @@ def predict():
     product_details = request.form.to_dict()
     
     # Create the input DataFrame with the specified feature names and order
-    input_data = pd.DataFrame([{
+    input_data = pd.DataFrame([{ 
+        'image': product_details['image'],      
         'ratings': float(product_details['ratings']),        
         'no_of_ratings': float(product_details['no_of_ratings']),  
         'actual_price': float(product_details['actual_price']),    
@@ -59,7 +60,6 @@ def predict():
 
     # Display the result on a new page 
     return render_template('prediction_result.html', predicted_price=predicted_discount_price[0][0])
-
 
 if __name__ == '__main__':
     app.run(debug=True)

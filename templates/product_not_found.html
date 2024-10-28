@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Enter Product Name</title>
+    <title>Product Not Found</title>
     <style>
         /* Background and Fonts */
         body {
@@ -23,54 +23,38 @@
             border-radius: 15px;
             padding: 30px;
             width: 300px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        /* Header */
-        h2 {
+        /* Message */
+        p {
+            font-size: 18px;
             color: #d81b60;
-            font-size: 24px;
-            margin-top: 0;
-            margin-bottom: 20px;
+            margin: 10px 0 20px;
         }
 
-        /* Input Styling */
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #f48fb1;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        /* Button Styling */
-        button {
-            background-color: #f06292;
+        /* Back Button */
+        a {
+            display: inline-block;
+            text-decoration: none;
             color: white;
-            border: none;
-            border-radius: 10px;
+            background-color: #f06292;
             padding: 10px 20px;
+            border-radius: 10px;
             font-size: 16px;
-            cursor: pointer;
             transition: background-color 0.3s;
         }
 
-        button:hover {
+        a:hover {
             background-color: #ec407a;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Enter Product Name</h2>
-        <form action="/" method="POST">
-            <input type="text" name="product_name" placeholder="Type product name..." required>
-            <button type="submit">Search</button>
-        </form>
+        <p>Product not found. Please try another product name.</p>
+        <a href="/">Go back</a>
     </div>
 </body>
 </html>
-

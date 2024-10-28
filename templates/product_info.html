@@ -3,24 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <title>Product Information</title>
+    <style>
+        /* Background and Fonts */
+        body {
+            background-color: #ffe6f0;
+            font-family: 'Arial', sans-serif;
+            color: #6a1b9a;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container */
+        .container {
+            background-color: #fff0f6;
+            border: 2px solid #f48fb1;
+            border-radius: 15px;
+            padding: 30px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* Header */
+        h2 {
+            color: #d81b60;
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Product Details List */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        li {
+            font-size: 16px;
+            padding: 5px 0;
+            border-bottom: 1px solid #f8bbd0;
+        }
+
+        /* Image Styling */
+        .product-image {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Button */
+        button {
+            display: block;
+            width: 100%;
+            background-color: #f06292;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #ec407a;
+        }
+    </style>
 </head>
 <body>
-    <h2>Product Details</h2>
-    <ul>
-        <li>Actual Price: {{ product_details['actual_price'] }}</li>
-        <li>Ratings: {{ product_details['ratings'] }}</li>
-        <li>No of Ratings: {{ product_details['no_of_ratings'] }}</li>
-        <li>Discount Percentage: {{ product_details['discount_percentage'] }}</li>
-        <li>i>Name Length: {{ product_details['name_length'] }}</li>
-        <li>Price Difference: {{ product_details['price_difference'] }}</li>
-        <li>Rating Ratio: {{ product_details['rating_ratio'] }}</li>
-        <li>Log Actual Price: {{ product_details['log_actual_price'] }}</li>
-    </ul>
-    <form action="{{ url_for('predict') }}" method="POST">
-        {% for key, value in product_details.items() %}
-            <input type="hidden" name="{{ key }}" value="{{ value }}">
-        {% endfor %}
-        <button type="submit">Predict</button>
-    </form>
+    <div class="container">
+        <h2>Product Details</h2>
+        <!-- Displaying the product image -->
+        <img src="{{ product_details['image'] }}" alt="Product Image" class="product-image">
+        
+        <ul>
+            <li>Actual Price: {{ product_details['actual_price'] }}</li>
+            <li>Ratings: {{ product_details['ratings'] }}</li>
+            <li>No of Ratings: {{ product_details['no_of_ratings'] }}</li>
+            <li>Rating Ratio: {{ product_details['rating_ratio'] }}</li>
+            <li>Log Actual Price: {{ product_details['log_actual_price'] }}</li>
+        </ul>
+        
+        <form action="{{ url_for('predict') }}" method="POST">
+            {% for key, value in product_details.items() %}
+                <input type="hidden" name="{{ key }}" value="{{ value }}">
+            {% endfor %}
+            <button type="submit">Predict</button>
+        </form>
+    </div>
 </body>
 </html>

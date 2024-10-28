@@ -3,10 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>Prediction Result</title>
+    <style>
+        /* Background and Fonts */
+        body {
+            background-color: #ffe6f0;
+            font-family: 'Arial', sans-serif;
+            color: #6a1b9a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Container */
+        .container {
+            background-color: #fff0f6;
+            border: 2px solid #f48fb1;
+            border-radius: 15px;
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Header */
+        h2 {
+            color: #d81b60;
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Predicted Price Text */
+        p {
+            font-size: 18px;
+            color: #6a1b9a;
+            margin: 10px 0 20px;
+        }
+
+        /* Back Link */
+        a {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: #f06292;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #ec407a;
+        }
+    </style>
 </head>
 <body>
-    <h2>Predicted Discount Price</h2>
-    <p>The predicted discount price is: {{ predicted_price }}</p>
-    <a href="/">Go back to Home</a>
+    <div class="container">
+        <h2>Predicted Discount Price</h2>
+        <p>The predicted discount price is: {{ predicted_price }}</p>
+        <a href="/">Go back to Home</a>
+    </div>
 </body>
 </html>
